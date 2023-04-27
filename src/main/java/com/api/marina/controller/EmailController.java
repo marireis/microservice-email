@@ -23,9 +23,11 @@ public class EmailController {
 	@PostMapping("/sending-email")
 	public ResponseEntity<Email> sendingEmail(@RequestBody @Valid EmailDto emailDto){
 		
-		Email email = new Email();
-		BeanUtils.copyProperties(emailDto, email);
+		Email email = new Email();//cria uma instancia de email
+		BeanUtils.copyProperties(emailDto, email);//metodo que converte dto para model
 		service.sendEmail(email);
-		return new ResponseEntity<>(email, HttpStatus.CREATED);
+		return new ResponseEntity<>(email, HttpStatus.CREATED);//retorna o email salvo e o status http criado
 	}
+	
+	
 }
